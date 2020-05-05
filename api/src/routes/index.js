@@ -1,12 +1,13 @@
+import {get, put, post, router, del} from "../config/router";
 import {AuthController} from "../controllers/AuthController";
 
-
-var express = require('express');
-var router = express.Router();
+post('login', new AuthController().login)
+post('register', new AuthController().login)
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.json(new AuthController().index());
-});
+get("/", new AuthController().index)
+
+
 
 module.exports = router;
+
