@@ -16,7 +16,7 @@ class AuthController {
 
 
     login(req, res, next) {
-        new User().findOne({login: req.body.login}, (not, user) => {
+        new User().findOne({email: req.body.email}, (not, user) => {
             if (user) {
                 if (Bcrypt.compareSync(req.body.password, user.password)) {
                     const token = randtoken.uid(70);
@@ -44,15 +44,19 @@ class AuthController {
 
 
     register(req, res, next) {
-        // return res.json({status: false, send:req.body});
-        if (req.body && (req.body.email || req.body.login) && req.body.password) {
+         // return res.json({status: false, send:req.body});
+        if (req.body && (req.body.email) && req.body.password) {
             const password = Bcrypt.hashSync(req.body.password, 10)
             req.body.password = password
         }
 
         new User().create(req.body, (err, data, reply) => {
             if (!err) {
-                res.json({status: true, msg: "Новый пользователь создан", data: data})
+                res.json({
+                    status: true,
+                    msg: "Новый пользователь создан",
+                    data: data
+                })
             } else res.json({
                 status: false,
                 mess: 'Такой логин уже существует',
