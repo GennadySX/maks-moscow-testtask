@@ -1,5 +1,6 @@
 import {Cors} from "./config/Cors";
 import {authMiddleware} from "./config/authMiddleware";
+import {fileUploadingConfig, fileUploadingRules} from "./utils/uploader";
 
 var express = require('express'),
     path = require('path'),

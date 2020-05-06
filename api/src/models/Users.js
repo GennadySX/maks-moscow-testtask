@@ -9,6 +9,7 @@ var user_table = new Schema({
     lastName: String,
     age: Number,
     avatar: String,
+    about: String,
     email: {
         type: String,
         required: true,

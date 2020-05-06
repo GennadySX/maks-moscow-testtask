@@ -10,11 +10,6 @@ class AuthController {
     }
 
 
-    getAll(req, res, next) {
-        new User().all((err, data) => res.json({status: true, data: data}))
-    }
-
-
     login(req, res, next) {
         new User().findOne({email: req.body.email}, (not, user) => {
             if (user) {
@@ -66,12 +61,7 @@ class AuthController {
         })
     }
 
-    user(req, res, next) {
-        if (res.user_id) {
-            new User().findOne({_id: res.user_id} , (not, user) => (user) ? res.json({user: user}) : res.json({status: false, mess: "not found user"}));
-        }
 
-    }
 
 
 }
