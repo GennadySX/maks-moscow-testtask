@@ -9,5 +9,7 @@ get("/", new AuthController().index)
 post('/login', new AuthController().login)
 post('/register', new AuthController().register)
 
+
+
 module.exports = router;
 

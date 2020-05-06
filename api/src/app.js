@@ -30,8 +30,8 @@ app.use((req, res, next) => Cors(req, res, next));
 
 
 
-app.use('/', indexRouter);
-app.use('/user', authMiddleware, userRouter);
 app.use('/blog',authMiddleware, blogRouter);
+app.use('/user', authMiddleware, userRouter);
+app.use('/', indexRouter);
 
 module.exports = app;

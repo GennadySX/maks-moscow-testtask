@@ -66,6 +66,12 @@ class AuthController {
         })
     }
 
+    user(req, res, next) {
+        if (res.user_id) {
+            new User().findOne({_id: res.user_id} , (not, user) => (user) ? res.json({user: user}) : res.json({status: false, mess: "not found user"}));
+        }
+
+    }
 
 
 }
